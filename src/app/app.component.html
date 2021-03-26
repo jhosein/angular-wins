@@ -1,0 +1,40 @@
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Responsible Practitioner Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+
+        <p *ngIf="name">I <span stlye="text-bold">{{ name }}</span> confirm that:</p>
+
+        <p>All information within the acceptance is accurate and confirms with all applicable policies and </p>
+        <ul>
+          <li>This communication in compliance with <a href="#">DPM-141</a>.</li>
+          <li>I have consulted with the LCSP and appropriate approvals are attached.</li>
+        </ul>
+        <label for="dateOfBirth">Please type your name to confirm.</label>
+        <div class="input-group">
+          <input type="text" [value]="name" (input)="name = $event.target.value" class="form-control" >
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Confirm</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-success" (click)="open(content)">Confirm</button>
+
+<hr>
+
+<pre>{{ closeResult }}</pre>
+<router-outlet></router-outlet>
